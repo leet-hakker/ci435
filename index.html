@@ -24,95 +24,12 @@
 		
 		<nav class="nav"><!--The primary navigation for the page -->
 			<ul>
-				<li><a href="">Learning Journal</a></li>
+				<li><a href="#">Learning Journal</a></li>
 				<li><a href="tutorial.html">Tutorial</a></li>
 				<li><a href="contact.html">Contact me</a></li>
 			</ul>
 		</nav>
 
-    <table>
-    <tr>
-      <th>Day/time</th>
-      <th>Monday</th>
-      <th>Tuesday</th>
-      <th>Wednesday</th>
-      <th>Thursday</th>
-      <th>Friday</th>
-    </tr>
-    <tr>
-      <td>09:00-10:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10:00-11:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>11:00-12:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>12:00-13:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>13:00-14:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>14:00-15:00</td>
-      <td>CI405 lecture</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>15:00-16:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>16:00-17:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>17:00-18:00</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    </table>
-	
 		<main><!--The main page content -->
 			<p><a href="#bottom">Go to the latest post</a></p>
 			<h2>Weekly Posts</h2>
@@ -181,9 +98,28 @@
           <h3 id="week4">Week 4: Styling fonts</h3>
           <p class="published">Published on <time datetime="2023-11-02">November 2, 2023</time></p>
         </header>
-        <p>This week I've learned about styling fonts, fallback fonts and importing external fonts.</p>
-        <p>I learned that there are two different ways to import external fonts, either using a &lt;link&gt; tag or by using @import in a css file. I was curious about the difference between the two: if there was any real difference and why the example chosen was to use &lt;link&gt; instead of @import.</p>
-        <p>I found that the reasoning was performance<sup>1</sup>: it's not recommended to use @import, as it has a performance overhead on the loading of the site. @import doesn't always download stylesheets in parallel - they are downloaded sequentially, one after the other if any &lt;link&gt; tags are used to load fonts or if @import is used across multiple stylesheets. This means that the site will take longer to load if you mix @import and &lt;link&gt; or have multiple stylesheets using @import. To contrast, if &lt;link&gt; is used, each font will be loaded in parallel, regardless of where it is used, so the loading time of the website will only be affected by the longest-loading font.</p>
+        <p>This week I've learned about styling fonts, fallback fonts and importing external fonts.
+I learned that there are two different ways to import external fonts, either using a &lt;link&gt; tag or by using @import in a css file. I was curious about the difference between the two: if there was any real difference and why the example chosen was to use &lt;link&gt; instead of @import.
+I found that the reasoning was performance<sup>1</sup>: it's not recommended to use @import, as it has a performance overhead on the loading of the site. @import doesn't always download stylesheets in parallel - they are downloaded sequentially, one after the other if any &lt;link&gt; tags are used to load fonts or if @import is used across multiple stylesheets. This means that the site will take longer to load if you mix @import and &lt;link&gt; or have multiple stylesheets using @import. To contrast, if &lt;link&gt; is used, each font will be loaded in parallel, regardless of where it is used, so the loading time of the website will only be affected by the longest-loading font.</p>
+      </article>
+
+      <article>
+          <header class="post">
+            <h3 id="week5">Week 5: Responsive Web Design 1</h3>
+            <p class="published">Published on <time datetime="2023-11-02">November 30, 2023</time></p>
+          </header>
+          <p>In this week's tutorial, I learned how to create a responsive website, using media queries and css grid layout structure. As well as this, I spent some time modifying the site to my own liking, and I set up a git repository on the brighton domains server so that I can work with the files in a way that is familiar to me. This also means that I have a much more natural way of keeping track of what I've done each week, which is a very happy bonus.
+The commits I made this week were as follows:</p>
+          <ul>
+            <li>Indentation, fix stylesheet.css</li>
+            <li>Change h1 style, improved page layout, changed media query
+
+I didn't like the way the header was styled - it was still using placeholder css, so I've had it use the same font as the rest of the page - I feel that Sans-Serif suits the style of the page much better, and given it a very dark teal for the colour. Also changed the link colours so they behave how a user expects, but they use slightly calmer colours than default. I made the main section take up all three columns in the largest layout, I prefer this. I am considering adding another media query to widen it again past another threshold, since the page still feels a bit too narrow past a certain point</li>
+            <li>Improved padding and footer wording</li>
+          </ul>
+          <p>Below, there is a before and after picture for this week.</p>
+          <img src="images/before.png" alt="Before">
+          <<img src="images/after.png" alt="After">
       </article>
 
 
@@ -195,10 +131,9 @@
         
         	<h2>References</h2>
             
-            	<ol>
-          <li><a href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/">Steve Soulders: <cite>Don't use @import</cite></a></li>
-                    <li>...</li>
-                </ol>
+            <ol>
+              <li><a href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/">Steve Souders: <cite>Don't use @import</cite></a></li>
+            </ol>
             
         </aside>    
  

@@ -48,7 +48,7 @@ header {}
   font-size: 0.8em;
 }
 
-nav {}
+
 
 .menu ul {
   margin: 0;
@@ -77,6 +77,10 @@ nav {}
 }
 
 .menu a:visited { color: #8740BF; }
+
+.nav a {
+  display: inline;
+}
 
 /*headings------------------------------------------------------------------- */
 h1 {
@@ -170,7 +174,6 @@ footer {grid-area: footer;}
     "banner"
     "menu"
     "nav"
-    "table"
     "main"
     "aside"
     "footer";
@@ -182,8 +185,8 @@ footer {grid-area: footer;}
     grid-template-columns: 3fr 6fr;
     grid-template-areas: 
       "banner  banner"
-      "menu  menu"
-      "nav  table"
+      "nav  menu"
+      "aside  main"
       "aside  main"
       "footer  footer";
   }
@@ -195,7 +198,7 @@ footer {grid-area: footer;}
   grid-template-areas: 
     "banner  banner  banner"
     "menu  menu  menu"
-    "nav  table  aside"
+    "nav  nav  aside"
     "main  main  main"
     "footer  footer  footer";
  }
