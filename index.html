@@ -119,22 +119,23 @@ The commits I made this week were as follows:</p>
                      show them an image that doesn't match with what they're looking at currently.          
                      Look at `srcset` and media queries?
           -->
-          <img src="images/week5-before.png" alt="Image of the top of the site before">
-          <img src="images/week5-after.png" alt="Image of the top of the site after">
+          <img id="week5-60em" src="images/week5-before.webp" alt="Image of the top of the site before">
+          <img id="week5-60em" src="images/week5-after.webp" alt="Image of the top of the site after">
       </article>
 
       <article>
         <header class="post">
-          <h3 id="week6">Week 6: Responsive Web Design 2 - Flexible Media</h3>
+          <h3 id="week6">Week 6: Responsive Web Design 2 - Flexible Media (But mostly accessibility)</h3>
           <p class="published">Published on <time datetime="2023-11-16">November 16, 2023</time></p>
         </header>
           <p>This week's tutorial showed me how to make images and video flexible within an HTML document by utilizing the CSS <code>max-width</code>, <code>overflow</code> and <code>width</code> properties. Therfore, I've updated the images previous to this post so that they are flexible, and all images in this post and future ones will be.</p>
           <p>I've spent some (not insignificant) time reading through the tags that I have available<sup><a href="#ref-2">2</a></sup> to make the HTML of the page more idiomatic and therefore accessible, and read about the <code>code</code> tag. While it's not groundbreaking, it is nice that I can now explicitly say that I'm embedding a code snippet, as well as apply my own styling to that end.</p>
           <p>Although I am aware that this page is not available via search engines, I have become interested in improving the SEO of this site, mostly for practice and because it's interesting to learn about, as well as that I have the opportunity to work on the development of a live site, and SEO will be important there. To assist in that, I decided to install a browser extension - Google Lighthouse<sup><a href="#ref-3">3</a></sup>, as it seemed the most convenient way to check. The good thing that I've found about Lighthouse is that it also gives me a lot of other information - notably accessibility information. So before I did any SEO, I felt I had to review that.</p>
           <p>While the site gets a pretty good score, 92, Lighthouse highlighted for me that the contrast ratio between the default colour for links and the background is too low:</p>
-          <img src="images/week6-accessibility.webp" max-width="100%" alt="A screenshot of Lighthouse, showing multiple warnings that the contrast between the white background and the blue links is too low.">
-          <p>Lighthouse also, very helpfully, points me to a website<sup><a href="#ref-4">4</a></sup> that I can use to check the contrast ratio of my colours, and select colours that contrast better.</p>
-          <p>I realised I could consolidate my links to the top and bottom of the page with the ids that they point to, thus I've reduced the overall HTML slightly.</p>
+          <img id="week6-accessibility-before" src="images/week6-accessibility-before.webp" alt="A screenshot of Lighthouse, showing multiple warnings that the contrast between the white background and the blue links is too low.">
+          <p>Lighthouse also, very helpfully, points me to a website<sup><a href="#ref-4">4</a></sup> that I can use to check the contrast ratio of my colours, and select colours that contrast better. I picked another colour using their tool, updated the stylesheet and I am now very happy to report that the site scores perfectly on automated<sup><a href="#ref-5">5</a></sup> accessibility tests:</p>
+          <img id="week6-accessibility-after" src="images/week6-accessibility-after.webp" alt="A screenshot showing no warnings">
+          <p>Despite having not actually managed to get to the SEO that I wanted to get to, I do feel that this post in particular is getting a little long, and this is everything that I got through this week, so everything else I want to do right now (including some research into media queries) will be for me to do next week.</p>
       </article>
 
     <p><a id="bottom" href="#top">Go to the top</a></p>
@@ -148,7 +149,8 @@ The commits I made this week were as follows:</p>
               <li id="ref-1"><a href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/">Steve Souders: <cite>Don't use @import</cite></a></li>
               <li id="ref-2"><a href="https://www.w3schools.com/TAGs">w3schools: <cite>HTML Reference</cite></a></li>
               <li id="ref-3"><a href="https://addons.mozilla.org/en-GB/firefox/addon/google-lighthouse/">Google Lighthouse for Firefox</a></li>
-              <li id="ref-4"><a href="https://dequeuniversity.com/rules/axe/4.7/color-contrast">Deque University: Elements must meet minimum color contrast ratio thresholds</a></li>
+          <li id="ref-4"><a href="https://dequeuniversity.com/rules/axe/4.7/color-contrast">Deque University: <cite>Elements must meet minimum color contrast ratio thresholds</cite></a></li>
+          <li id="ref-5"><a href="https://web.dev/articles/how-to-review">web.dev: <cite>How To Do an Accessibility Review</cite></a></li>
             </ol>
             
         </aside>    
