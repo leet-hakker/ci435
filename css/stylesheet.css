@@ -64,7 +64,7 @@ header {}
 
 .menu a {
     display: block;
-    color: #0090D2;
+    color: #0044E6;
     padding: .7em 1.25em .7em 1.25em;
     margin-right: 4px;
     text-decoration: none;
@@ -72,7 +72,7 @@ header {}
 }
 
 .menu a:hover {
-    /* background-color: #0090D2; */
+    /* background-color: #0044E6; */
     color: #000;
 }
 
@@ -142,11 +142,11 @@ img { max-width: 100%; }
 
 /*anchors--------------------------------------------------------------------- */
 a:link {
-    color: #0090D2;
+    color: #0044E6;
 }
 
 a:visited {
-    color: #0090D2;
+    color: #0044E6;
 }
 
 a:hover {
@@ -156,7 +156,7 @@ a:hover {
 }
 
 a:active {
-    color: #0090D2;
+    color: #0044E6;
 }
 
 .banner {grid-area: banner;}
