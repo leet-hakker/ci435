@@ -5,5 +5,5 @@ deployment:
         - /bin/cp index.html $DEPLOYPATH
         - /bin/cp contact.html $DEPLOYPATH
         - /bin/cp tutorial.html $DEPLOYPATH
-        - /bin/cp css/* $DEPLOYPATH
-        - /bin/cp images/* $DEPLOYPATH
+        - /bin/cp -R css $DEPLOYPATH
+        - /bin/cp -R images $DEPLOYPATH
