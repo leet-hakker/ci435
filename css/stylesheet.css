@@ -145,25 +145,8 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%; 
+  width: 75%; 
 }
-
-.week5-60em {
-  display: none;
-  max-width: 1038px;
-}
-
-.week5-50em {
-  display: none;
-  width: 75%;
-  max-width: 1060px;
-}
-
-.week5-mobile {
-  width: 75%;
-  max-width: 2400px;
-}
-
 
 #week6-accessibility-before {
   max-width: 844px;
@@ -223,18 +206,6 @@ footer {grid-area: footer;}
       "aside  main"
       "footer  footer";
   }
-
-  .week5-mobile {
-    display: none;
-  }
-
-  .week5-60em {
-    display: none;
-  }
-
-  .week5-50em {
-    display: block;
-  }
 }
 
 @media (min-width: 60em) {
@@ -248,16 +219,8 @@ footer {grid-area: footer;}
       "footer  footer  footer";
   }
 
-  .week5-mobile {
-      display: none;
-  }
-
-  .week5-50em {
-      display: none;
-  }
-
-  .week5-60em {
-      display: block;
+  img {
+    width: 100%;
   }
 }
 

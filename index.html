@@ -98,8 +98,8 @@
           <p class="published">Published on <time datetime="2023-11-02">November 2, 2023</time></p>
         </header>
         <p>This week I've learned about styling fonts, fallback fonts and importing external fonts.
-I learned that there are two different ways to import external fonts, either using a &lt;link&gt; tag or by using @import in a css file. I was curious about the difference between the two: if there was any real difference and why the example chosen was to use &lt;link&gt; instead of @import.
-            I found that the reasoning was performance<sup><a href="#ref-1">1</a></sup>: it's not recommended to use @import, as it has a performance overhead on the loading of the site. @import doesn't always download stylesheets in parallel - they are downloaded sequentially, one after the other if any &lt;link&gt; tags are used to load fonts or if @import is used across multiple stylesheets. This means that the site will take longer to load if you mix @import and &lt;link&gt; or have multiple stylesheets using @import. To contrast, if &lt;link&gt; is used, each font will be loaded in parallel, regardless of where it is used, so the loading time of the website will only be affected by the longest-loading font.</p>
+            I learned that there are two different ways to import external fonts, either using a <code>&lt;link&gt;</code> tag or by using <code>@import</code> in a css file. I was curious about the difference between the two: if there was any real difference and why the example chosen was to use <code>&lt;link&gt;</code> instead of <code>@import</code>.
+            I found that the reasoning was performance<sup><a href="#ref-1">1</a></sup>: it's not recommended to use <code>@import</code>, as it has a performance overhead on the loading of the site. <code>@import</code> doesn't always download stylesheets in parallel - they are downloaded sequentially, one after the other if any <code>&lt;link&gt;</code> tags are used to load fonts or if <code>@import</code> is used across multiple stylesheets. This means that the site will take longer to load if you mix <code>@import</code> and <code>&lt;link&gt;</code> or have multiple stylesheets using <code>@import</code>. To contrast, if <code>&lt;link&gt;</code> is used, each font will be loaded in parallel, regardless of where it is used, so the loading time of the website will only be affected by the longest-loading font.</p>
       </article>
 
       <article>
@@ -115,18 +115,18 @@ The commits I made this week were as follows:</p>
             <li>Improved padding and footer wording</li>
           </ul>
           <p>Below, there is a before and after picture for this week.</p>
-          <!-- TODO: The image should change based on the user's screen. It doesn't really make sense to
-                     show them an image that doesn't match with what they're looking at currently.          
-                     Look at `srcset` and media queries?
-          -->
           <p>Before:</p>
-          <img class="week5-60em" src="images/week5-before.webp" alt="Image of the top of the site before">
-          <img class="week5-50em" src="images/week5-before-50em.webp" alt="Image of the top of the site before">
-          <img class="week5-mobile" src="images/week5-before-mobile.webp" alt="Image of the top of the site before">
+          <picture>
+            <source srcset="images/week5-before.webp" media="(min-width: 60em)" type="image/webp">
+            <source srcset="images/week5-before-50em.webp" media="(min-width: 50em)" type="image/webp">
+            <img src="images/week5-before-mobile.webp" alt="Image of the top of the site before">
+          </picture>
           <p>After:</p>
-          <img class="week5-60em" src="images/week5-after.webp" alt="Image of the top of the site after">
-          <img class="week5-50em" src="images/week5-after-50em.webp" alt="Image of the top of the site after">
-          <img class="week5-mobile" src="images/week5-after-mobile.webp" alt="Image of the top of the site after">
+          <picture>
+            <source srcset="images/week5-after.webp" media="(min-width: 60em)" type="image/webp">
+            <source srcset="images/week5-after-50em.webp" media="(min-width: 50em)" type="image/webp">
+            <img src="images/week5-after-mobile.webp" alt="Image of the top of the site after">
+          </picture>
       </article>
 
       <article>
@@ -141,13 +141,18 @@ The commits I made this week were as follows:</p>
           <img id="week6-accessibility-before" src="images/week6-accessibility-before.webp" alt="A screenshot of Lighthouse, showing multiple warnings that the contrast between the white background and the blue links is too low.">
           <p>Lighthouse also, very helpfully, points me to a website<sup><a href="#ref-4">4</a></sup> that I can use to check the contrast ratio of my colours, and select colours that contrast better. I picked another colour using their tool, updated the stylesheet and I am now very happy to report that the site scores perfectly on automated<sup><a href="#ref-5">5</a></sup> accessibility tests:</p>
           <img id="week6-accessibility-after" src="images/week6-accessibility-after.webp" alt="A screenshot showing no warnings">
-          <p>Despite having not actually managed to get to the SEO that I wanted to get to, I do feel that this post in particular is getting a little long, and this is everything that I got through this week, so everything else I want to do right now (including some research into media queries) will be for me to do next week.</p>
+          <p>Despite having not actually managed to get to the SEO that I wanted to get to, I do feel that this post in particular is getting a little long, and this is everything that I got through this week, so everything else I want to do right now (including some more media query work) will be for me to do next week.</p>
       </article>
 
       <article>
         <header>
-          <h3 id="week7">Week 7: </h3>
+          <h3 id="week7">Week 7: More media queries, new responsive layouts</h3>
+          <p class="published">Published on: <time datetime="2023-11-23">November 23, 2023</time></p>
         </header>
+          <p>This week I've carried on with some of the things I wanted to do last week. The first change I've made is to the images from week 5, and will be matched in any images of the site going forward. I had felt it didn't make sense to show visitors a version of the website that doesn't match their view, especially if I'm trying to show how the site has changed. To match this, I went back into my commit history and found the commits that matched those images. I then took screenshots of the page before and after on my mobile phone, and in the 50em view. I figured that I could use media queries to show and hide these dynamically, by setting the <code>display</code> css property to either <code>none</code> or <code>block</code>, depending on if it should be shown or not.</p>
+          <p>It worked well, images now change based on the screen the user is viewing from. However, the issue I have with this is that it downloads <em>every</em> image, regardless of which will be shown to the user:</p>
+          <img src="images/week7-network-before.webp" alt="All images are loaded, even the ones that have `display: none`">
+          <p>I knew this could be fixed with lazy loading, but that would require Javascript, I want to do this using only HTML and CSS. I did some research<sup><a href="#ref-6">6</a>, <a href="#ref-7">7</a>, <a href="#ref-8">8</a></sup> and found that it's supported by use of the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> tags. I can define multiple <code>&lt;source&gt;</code>s for one <code>&lt;picture&gt;</code> element, and by using media queries, the browser will select the correct one and only load that image. I also made sure to give each <code>&lt;source&gt;</code> a <code>type</code> attribute, as that should save a round trip to the server (no need to ask the server the MIME type of the data)</p>
       </article>
 
     <p><a id="bottom" href="#top">Go to the top</a></p>
@@ -163,6 +168,9 @@ The commits I made this week were as follows:</p>
               <li id="ref-3"><a href="https://addons.mozilla.org/en-GB/firefox/addon/google-lighthouse/">Google Lighthouse for Firefox</a></li>
           <li id="ref-4"><a href="https://dequeuniversity.com/rules/axe/4.7/color-contrast">Deque University: <cite>Elements must meet minimum color contrast ratio thresholds</cite></a></li>
           <li id="ref-5"><a href="https://web.dev/articles/how-to-review">web.dev: <cite>How To Do an Accessibility Review</cite></a></li>
+          <li id="ref-6"><a href="https://swimburger.net/blog/web/web-performance-prevent-wasteful-hidden-image-requests">Niels Swimberghe (swimburger.net): <cite>Web performance: prevent wasteful hidden image requests (display: none)</cite></a></li>
+          <li id="ref-7"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">MDN: <cite>&lt;picture&gt;: The Picture Element</cite></a></li>
+          <li id="ref-8"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source">MDN: <cite>&lt;source&gt;: The Media or Image Source element</cite></a></li>
             </ol>
             
         </aside>    
