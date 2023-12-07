@@ -1,9 +1,9 @@
 ---
 deployment:
-    tasks:
-        - export DEPLOYPATH=/home/bh652/public_html/
-        - /bin/cp index.html $DEPLOYPATH
-        - /bin/cp contact.html $DEPLOYPATH
-        - /bin/cp tutorial.html $DEPLOYPATH
-        - /bin/cp -R css $DEPLOYPATH
-        - /bin/cp -R images $DEPLOYPATH
+  tasks:
+    - export DEPLOYPATH=/home/bh652/public_html/
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp contact.html $DEPLOYPATH
+    - /bin/cp tutorial.html $DEPLOYPATH
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
