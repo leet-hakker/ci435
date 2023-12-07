@@ -78,7 +78,11 @@ header {}
 
 .menu a:visited { color: #8740BF; }
 
-.nav a {
+.nav ul {
+  float: left;
+}
+
+.nav li {
   display: inline;
 }
 
@@ -111,7 +115,8 @@ ul {}
 
 li {
   font-size: 1.1rem;
-  line-height: 1.5;
+  line-height: 1.25;
+  margin: 10px;
 }
 
 ol {}
@@ -188,7 +193,6 @@ footer {grid-area: footer;}
   grid-gap: 20px;
   grid-template-areas:
     "banner"
-    "menu"
     "nav"
     "main"
     "aside"
@@ -201,7 +205,7 @@ footer {grid-area: footer;}
     grid-template-columns: 3fr 6fr;
     grid-template-areas: 
       "banner  banner"
-      "nav  menu"
+      "nav  nav"
       "aside  main"
       "aside  main"
       "footer  footer";
@@ -213,10 +217,10 @@ footer {grid-area: footer;}
     grid-template-columns: 3fr 5fr 3fr;
     grid-template-areas: 
       "banner  banner  banner"
-      "menu  menu  menu"
-      "nav  nav  aside"
+      "nav  nav  nav"
       "main  main  main"
-      "footer  footer  footer";
+      "footer  footer  footer"
+      "aside aside aside";
   }
 
   img {
