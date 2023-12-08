@@ -149,10 +149,39 @@ The commits I made this week were as follows:</p>
           <p class="published">Published on: <time datetime="2023-11-23">November 23, 2023</time></p>
         </header>
           <p>This week I've carried on with some of the things I wanted to do last week. The first change I've made is to the images from week 5, and will be matched in any images of the site going forward. I had felt it didn't make sense to show visitors a version of the website that doesn't match their view, especially if I'm trying to show how the site has changed. To match this, I went back into my commit history and found the commits that matched those images. I then took screenshots of the page before and after on my mobile phone, and in the 50em view. I figured that I could use media queries to show and hide these dynamically, by setting the <code>display</code> css property to either <code>none</code> or <code>block</code>, depending on if it should be shown or not.</p>
+          <figure>
+            <img src="images/week7-responsive-images-html-1.webp" alt="Six images, two for each responsive mode" style="max-width: 1171px;">
+            <figcaption>
+              Each image has the class of which view it should be shown in, so each of them can be made to hide and display using CSS
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="images/week7-responsive-images-css.webp" alt="Each class is styled according to when they should be shown" style="max-width: 403px">
+            <figcaption>
+              For each class, it's styled differently in each media query. Because of our mobile-first approach, the mobile class is <code>display: block</code> by default, inherited from <code>img</code>.
+            </figcaption>
+          </figure>
           <p>It worked well, images now change based on the screen the user is viewing from. However, the issue I have with this is that it downloads <em>every</em> image, regardless of which will be shown to the user:</p>
-          <img src="images/week7-network-before.webp" alt="All images are loaded, even the ones that have `display: none`">
-          <p>I knew this could be fixed with lazy loading, but that would require Javascript, I want to do this using only HTML and CSS. I did some research<sup><a href="#ref-6">6</a>, <a href="#ref-7">7</a>, <a href="#ref-8">8</a></sup> and found that it's supported by use of the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> tags. I can define multiple <code>&lt;source&gt;</code>s for one <code>&lt;picture&gt;</code> element, and by using media queries, the browser will select the correct one and only load that image. I also made sure to give each <code>&lt;source&gt;</code> a <code>type</code> attribute, as that should save a round trip to the server (no need to ask the server the MIME type of the data). All of this also means I can remove the CSS I wrote to do this earlier, which is a shame that I wasted some time on it, although it was good practice of media queries so I'm not too fussed. It was also interesting to learn that media queries can also be used within HTML as well as the CSS. Anyway, with those changes made, the network graph now looks like this:</p>
-          <img src="images/week7-network-after.webp" alt="Only the required images get loaded">
+          <figure>
+            <img src="images/week7-network-before.webp" alt="All images are loaded, even the ones that have `display: none`">
+            <figcaption>
+              A user could be forced to download up to 461kB of data they don't use!
+            </figcaption>
+          </figure>
+          <p>I knew this could be fixed with lazy loading, but that would require Javascript, I want to do this using only HTML and CSS. I did some research<sup><a href="#ref-6">6</a>, <a href="#ref-7">7</a>, <a href="#ref-8">8</a></sup> and found that it's supported by use of the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> tags. I can define multiple <code>&lt;source&gt;</code>s for one <code>&lt;picture&gt;</code> element, and by using media queries, the browser will select the correct one and only load that image. I also made sure to give each <code>&lt;source&gt;</code> a <code>type</code> attribute, as that should save a round trip to the server (no need to ask the server the MIME type of the data). All of this also means I can remove the CSS I wrote to do this earlier, which is a shame that I wasted some time on it, although it was good practice of media queries so I'm not too fussed. It was also interesting to learn that media queries can also be used within HTML as well as the CSS.</p> 
+          <figure>
+            <img src="images/week7-responsive-images-html-2.webp" alt="The many image tags have changed to <picture> and <source> tags">
+            <figcaption>
+              Now the browser knows immediately which images to load. This also looks much clearer to read as code.
+            </figcaption>
+          </figure>
+          <p>Anyway, with those changes made, the network graph now looks like this:</p>
+          <figure>
+            <img src="images/week7-network-after.webp" alt="Only the required images get loaded">
+          <figcaption>
+            Now you can see that for week 5, only the two images the user needs get downloaded. No wasted bytes.
+          </figcaption>
+          </figure>
           <p>Much better.</p>
 
           <p>I want the nav bar to be horizontal - it's been irritating me. I used w3schools to learn how to do it<sup><a href="#ref-9">9</a></sup>, and now it works exactly how I want. All I needed to do was change the style of <code>nav ul</code> to <code>float: left;</code> and the style of <code>nav li</code> to <code>display: inline;</code></p>
