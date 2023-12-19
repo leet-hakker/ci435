@@ -1,8 +1,18 @@
+:root {
+  --main-colour: #fff;
+  --secondary-colour: #242331;
+  --tertiary-colour: #ededed;
+  --accent-colour2: #3d405b;
+
+  --link-colour: #0044E6;
+}
+
+
 /*sections------------------------------------------------------------------- */
 body {
-    background-color: #fff;
+    background-color: var(--main-colour);
     font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
-    color: #333;
+    color: var(--secondary-colour);
     font-size: 1rem;
     line-height: 1.1rem;
 }
@@ -11,7 +21,6 @@ body {
     max-width: 1000px;
     margin-right: auto;
     margin-left: auto;
-    /* background-color: #fff; */
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -30,10 +39,14 @@ footer {
 
 header {}
 
+.banner {
+  background-color: var(--accent-colour2);
+  margin: 0px;
+}
+
 .post {
     margin-top: 2px;
     margin-bottom: 2px;
-    /* background-color: #ccc; */
 }
 
 .post h3 {
@@ -64,19 +77,23 @@ header {}
 
 .menu a {
     display: block;
-    color: #0044E6;
+    color: var(--link-colour);
     padding: .7em 1.25em .7em 1.25em;
     margin-right: 4px;
     text-decoration: none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid var(--accent-colour1);
 }
 
 .menu a:hover {
-    /* background-color: #0044E6; */
-    color: #000;
+    color: var(--secondary-colour);
 }
 
-.menu a:visited { color: #8740BF; }
+.menu a:visited { color: var(--accent-colour2); }
+
+.nav {
+  margin: 0px;
+  background-color: var(--accent-colour1);
+}
 
 .nav ul {
   float: left;
@@ -89,7 +106,7 @@ header {}
 /*headings------------------------------------------------------------------- */
 h1 {
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    color: #112222;
+    color: var(--main-colour);
     font-size: 36px;
     line-height: 50px;
 }
@@ -97,6 +114,10 @@ h1 {
 h2 {}
 
 h3 {}
+
+#portfolio-heading {
+  margin-left: 1em;
+}
 
 /*grouping------------------------------------------------------------------- */
 p {
@@ -107,7 +128,7 @@ p {
 blockquote {}
 
 table {
-    border: 1px solid black;
+    border: 1px solid var(--secondary-colour);
 }
 
 /*lists---------------------------------------------------------------------- */
@@ -127,6 +148,16 @@ dt {}
 
 dd {}
 
+.projects	{
+  margin: 0;
+  margin-left: 1em;
+  padding: 0;
+}
+.projects li	{
+  margin: 0;
+  padding: 0;
+}
+
 /*text------------------------------------------------------------------------ */
 em {}
 
@@ -139,7 +170,7 @@ cite {}
 time {}
 
 code {
-  background-color: #e9e9e9;
+  background-color: var(--tertiary-colour);
 }
 /*image----------------------------------------------------------------------- */
 figure {}
@@ -163,24 +194,31 @@ img {
 
 /*anchors--------------------------------------------------------------------- */
 a:link {
-    color: #0044E6;
+    color: var(--link-colour);
 }
 
 a:visited {
-    color: #0044E6;
+    color: var(--link-colour);
 }
 
 a:hover {
-    color: #0063A6;
+    color: saturate(80%);
     text-decoration: none;
     ;
 }
 
 a:active {
-    color: #0044E6;
+    color: var(--link-colour);
 }
 
-.banner {grid-area: banner;}
+.hidden-link {
+  text-decoration: none;
+  color: var(--secondary-colour);
+}
+
+.banner {
+  grid-area: banner;
+}
 .menu {grid-area: menu;}
 nav {grid-area: nav;}
 table {grid-area: table;}
@@ -237,7 +275,9 @@ body {
 {
  .banner { padding: 0 0 0 3em; }
 /* Menu navigation - inline layout for wider screens */	
- .menu { padding: 1em 0 1em 3em; }
+ .menu { 
+    padding: 1em 0 1em 3em;
+  }
  .menu li
  {
   display: inline;
@@ -255,4 +295,31 @@ body {
  table {
   display:none;
  }
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+}
+.project-card {
+  display: flex; 
+}
+.card-content {
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--main-colour);
+  border: 2px solid var(--secondary-colour);
+  border-radius: 15px;
+  margin: 1.25em 1.25em 0.3em 0;
+  padding: 1em;
+}
+
+/*640 px - tablet portrait orientation - 2 columns*/
+@media screen and (min-width: 40em){
+  .project-card { width: 50%; }
+}
+/*960 px* - tablet landscape orientation and above - 3 columns*/
+@media screen and (min-width: 60em) {
+  .project-card { width: 33.33%; }
+  
 }
