@@ -7,6 +7,30 @@
         <link href="css/stylesheet.css" rel="stylesheet">
     </head>
     <body>
+
+      <form id="form1">
+        <fieldset>
+        <legend>Your contact details</legend>
+          <label for="name">Name <em>(required)</em></label>
+          <input type="text" required placeholder="John Doe" id="name">
+          <label for="email">Email address <em>(required)</em></label>
+          <input type="text" type="email" id="email">
+        </fieldset>
+        <fieldset>
+          <label for="message">Message: </label>
+          <textarea id="message" required></textarea>
+        </fieldset>
+        <fieldset>
+        <legend>Would you like more information?</legend>
+        <label for="information-yes">
+          <input type="radio" id="information-yes" 
+          name="information" value="yes">Yes please</label>
+        <label for="information-no">
+          <input type="radio" id="information-no" 
+          name="information" value="no" checked >No thanks</label>
+        </fieldset>
+      </form>
+
       <h2 id="portfolio-heading">Notable Projects:</h2>
        <ol class="projects">
             <li class="project-card">
