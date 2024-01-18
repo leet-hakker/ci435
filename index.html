@@ -98,7 +98,7 @@
         </header>
         <p>This week I've learned about styling fonts, fallback fonts and importing external fonts.
             I learned that there are two different ways to import external fonts, either using a <code>&lt;link&gt;</code> tag or by using <code>@import</code> in a css file. I was curious about the difference between the two: if there was any real difference and why the example chosen was to use <code>&lt;link&gt;</code> instead of <code>@import</code>.
-            I found that the reasoning was performance<sup><a href="#ref-1">1</a></sup>: it's not recommended to use <code>@import</code>, as it has a performance overhead on the loading of the site. <code>@import</code> doesn't always download stylesheets in parallel - they are downloaded sequentially, one after the other if any <code>&lt;link&gt;</code> tags are used to load fonts or if <code>@import</code> is used across multiple stylesheets. This means that the site will take longer to load if you mix <code>@import</code> and <code>&lt;link&gt;</code> or have multiple stylesheets using <code>@import</code>. To contrast, if <code>&lt;link&gt;</code> is used, each font will be loaded in parallel, regardless of where it is used, so the loading time of the website will only be affected by the longest-loading font.</p>
+            I found that the reasoning was performance <a href="#ref-1">(Souders, 2009)</a>: it's not recommended to use <code>@import</code>, as it has a performance overhead on the loading of the site. <code>@import</code> doesn't always download stylesheets in parallel - they are downloaded sequentially, one after the other if any <code>&lt;link&gt;</code> tags are used to load fonts or if <code>@import</code> is used across multiple stylesheets. This means that the site will take longer to load if you mix <code>@import</code> and <code>&lt;link&gt;</code> or have multiple stylesheets using <code>@import</code>. To contrast, if <code>&lt;link&gt;</code> is used, each font will be loaded in parallel, regardless of where it is used, so the loading time of the website will only be affected by the longest-loading font.</p>
       </article>
 
       <article>
@@ -144,8 +144,8 @@ The commits I made this week were as follows:</p>
           <p class="published">Published on <time datetime="2023-11-16">November 16, 2023</time></p>
         </header>
           <p>This week's tutorial showed me how to make images and video flexible within an HTML document by utilizing the CSS <code>max-width</code>, <code>overflow</code> and <code>width</code> properties. Therfore, I've updated the images previous to this post so that they are flexible, and all images in this post and future ones will be.</p>
-          <p>I've spent some (not insignificant) time reading through the tags that I have available<sup><a href="#ref-2">2</a></sup> to make the HTML of the page more idiomatic and therefore accessible, and read about the <code>code</code> tag. While it's not groundbreaking, it is nice that I can now explicitly say that I'm embedding a code snippet, as well as apply my own styling to that end.</p>
-          <p>Although I am aware that this page is not available via search engines, I have become interested in improving the SEO of this site, mostly for practice and because it's interesting to learn about, as well as that I have the opportunity to work on the development of a live site, and SEO will be important there. To assist in that, I decided to install a browser extension - Google Lighthouse<sup><a href="#ref-3">3</a></sup>, as it seemed the most convenient way to check. The good thing that I've found about Lighthouse is that it also gives me a lot of other information - notably accessibility information. So before I did any SEO, I felt I had to review that.</p>
+          <p>I've spent some (not insignificant) time reading through the tags that I have available <a href="#ref-2">(W3Schools, n.d.)</a> to make the HTML of the page more idiomatic and therefore accessible, and read about the <code>code</code> tag. While it's not groundbreaking, it is nice that I can now explicitly say that I'm embedding a code snippet, as well as apply my own styling to that end.</p>
+          <p>Although I am aware that this page is not available via search engines, I have become interested in improving the SEO of this site, mostly for practice and because it's interesting to learn about, as well as that I have the opportunity to work on the development of a live site, and SEO will be important there. To assist in that, I decided to install a browser extension - Google Lighthouse <a href="#ref-3">(GoogleChrome, 2019)</a>, as it seemed the most convenient way to check. The good thing that I've found about Lighthouse is that it also gives me a lot of other information - notably accessibility information. So before I did any SEO, I felt I had to review that.</p>
           <p>While the site gets a pretty good score, 92, Lighthouse highlighted for me that the contrast ratio between the default colour for links and the background is too low:</p>
           <figure>
             <img id="week6-accessibility-before" src="images/week6-accessibility-before.webp" alt="A screenshot of Lighthouse, showing multiple warnings that the contrast between the white background and the blue links is too low.">
@@ -153,7 +153,7 @@ The commits I made this week were as follows:</p>
               Lighthouse reckons the site is pretty accessible, but I'll need to fix the contrast so that everyone can see the links.
             </figcaption>
           </figure>
-          <p>Lighthouse also, very helpfully, points me to a website<sup><a href="#ref-4">4</a></sup> that I can use to check the contrast ratio of my colours, and select colours that contrast better. I picked another colour (<span style="background-color: #0044E6; color: #eee">#0044E6</span>) using their tool, updated the stylesheet from <span style="background-color: #0090D2; color: #eee;">#0090D2</span> and I am now very happy to report that the site scores perfectly on automated<sup><a href="#ref-5">5</a></sup> accessibility tests:</p>
+          <p>Lighthouse also, very helpfully, points me to a website <a href="#ref-4">(Deque University, n.d.)</a> that I can use to check the contrast ratio of my colours, and select colours that contrast better. I picked another colour (<span style="background-color: #0044E6; color: #eee">#0044E6</span>) using their tool, updated the stylesheet from <span style="background-color: #0090D2; color: #eee;">#0090D2</span> and I am now very happy to report that the site scores perfectly on automated <a href="#ref-5">(Dodson, 2017)</a> accessibility tests:</p>
           <figure>
             <img id="week6-accessibility-after" src="images/week6-accessibility-after.webp" alt="A screenshot showing no warnings">
             <figcaption>
@@ -188,7 +188,7 @@ The commits I made this week were as follows:</p>
               A user could be forced to download up to 461kB of data they don't use!
             </figcaption>
           </figure>
-          <p>I knew this could be fixed with lazy loading, but that would require Javascript, I want to do this using only HTML and CSS. I did some research<sup><a href="#ref-6">6</a>, <a href="#ref-7">7</a>, <a href="#ref-8">8</a></sup> and found that it's supported by use of the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> tags. I can define multiple <code>&lt;source&gt;</code>s for one <code>&lt;picture&gt;</code> element, and by using media queries, the browser will select the correct one and only load that image. I also made sure to give each <code>&lt;source&gt;</code> a <code>type</code> attribute, as that should save a round trip to the server (no need to ask the server the MIME type of the data). All of this also means I can remove the CSS I wrote to do this earlier, which is a shame that I wasted some time on it, although it was good practice of media queries so I'm not too fussed. It was also interesting to learn that media queries can also be used within HTML as well as the CSS.</p> 
+          <p>I knew this could be fixed with lazy loading, but that would require Javascript, I want to do this using only HTML and CSS. I did some research (<a href="#ref-6">Swimberghe, 2019</a>, <a href="#ref-7">MDN Contributors, 2023b</a>, <a href="#ref-8">MDN Contributors, 2023a</a>) and found that it's supported by use of the <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> tags. I can define multiple <code>&lt;source&gt;</code>s for one <code>&lt;picture&gt;</code> element, and by using media queries, the browser will select the correct one and only load that image. I also made sure to give each <code>&lt;source&gt;</code> a <code>type</code> attribute, as that should save a round trip to the server (no need to ask the server the MIME type of the data). All of this also means I can remove the CSS I wrote to do this earlier, which is a shame that I wasted some time on it, although it was good practice of media queries so I'm not too fussed. It was also interesting to learn that media queries can also be used within HTML as well as the CSS.</p> 
           <figure>
             <img src="images/week7-responsive-images-html-2.webp" alt="The many image tags have changed to <picture> and <source> tags">
             <figcaption>
@@ -204,7 +204,7 @@ The commits I made this week were as follows:</p>
           </figure>
           <p>Much better.</p>
 
-          <p>I want the nav bar to be horizontal - it's been irritating me. I used w3schools to learn how to do it<sup><a href="#ref-9">9</a></sup>, and now it works exactly how I want. All I needed to do was change the style of <code>nav ul</code> to <code>float: left;</code> and the style of <code>nav li</code> to <code>display: inline;</code></p>
+          <p>I want the nav bar to be horizontal - it's been irritating me. I used <a href="#ref-9">W3Schools</a> (n.d.) to learn how to do it, and now it works exactly how I want. All I needed to do was change the style of <code>nav ul</code> to <code>float: left;</code> and the style of <code>nav li</code> to <code>display: inline;</code></p>
 
           <p>The tutorial this week was more responsive layouts: like flexbox and multi-column. While I dont really feel that these new layouts suit this page, so I won't be changing it, I should really use them somewhere. I figured that I could use flexbox on the contact page to have a portfolio of sorts below the contact form that we'll do next week.</p>
 
@@ -218,31 +218,76 @@ The commits I made this week were as follows:</p>
             <p class="published">Published on <time datetime="2023-11-30">November 30, 2023</time></p>
         </header>
 
-          <p>This weeks tutorial is the last where we'll have something explicit to do, the instructions this week showed me how to put that contact form I mentioned last week into my contact.html page.</p>
+          <p>This weeks tutorial is the last where we'll have something explicit to do, the instructions this week showed me how 
+            to put that contact form I mentioned last week into my contact.html page.</p>
+
+          <p>I've finished the tutorial, now I've got a basic form on my contact page. I did make sure to increase the height
+            of the <code>textarea</code> as by default it just feels quite small. I'll style it so it suits the rest of the page.</p>
+
+          <p>The first thing I've done is apply a style to the whole contact page that is consistent with the home page.</p>
+          <p>Before:</p>
+          <figure>
+            <img src="images/week8-whole-page-before.webp" alt="Unstyled contact page">
+          </figure>
+          <p>After:</p>
+          <figure>
+            <img src="images/week8-whole-page-after.webp" alt="Contact page with style consistent with the whole site">
+          </figure>
+
       </article>
 
 
       <article>
         <header>
-          <h3 id="week10">Week 9: Formative feedback</h3>
+          <h3 id="week9">Week 9: Formative feedback</h3>
           <p class="published">Published on <time datetime="2023-12-07">December 7, 2023</time></p>
         </header>
         <p>This week there wasn't any tutorial work, but I did get formative feedback on the site so far. The feedback I got was good, although noted that I needed to provide evidence of validation in the form of screenshots, and that I should consider combining the code that I wrote/changed with the visual change within the site. Thankfully, I have a git history that means I can do this retrospectively <em>very easily</em>. So, I can revert the code to various states, screenshot the code and then insert them in the relevant places.</p>
         <p>I also was told that I should provide some more context with the images, so I've changed them all to be figures, and now I can caption them all.</p>
         <p>Now would be a good time to validate, so I'll do that.</p>
         <figure>
-          <img src="images/week10-html-validation.webp" alt="HTML validation passes">
+          <img src="validationAndTesting/week10/html-validation.webp" alt="HTML validation passes">
           <figcaption>
               No errors on the HTML.
           </figcaption>
         </figure>
         <figure>
-          <img src="images/week10-css-validation.webp" alt="CSS validation passes">
+          <img src="validationAndTesting/week10/css-validation.webp" alt="CSS validation passes">
           <figcaption>
             And none on CSS either.
           </figcaption>
+        </figure>
       </article>
         
+      <article>
+        <header>
+          <h3 id="week10">Week 10: Finishing off</h3>
+          <p class="published">Published on <time datetime="2023-12-14">December 14, 2023</time></p>
+        </header>
+          <p>This week I'm finishing. I'll do that tutorial page I've been putting off, and I'll wrap up all the small bits on the rest of the site. First up is the tutorial page. I made a design for myself so I know how I need to lay out the grid:</p>
+        <figure>
+          <img src="images/tutorial-design.webp" alt="A rough design for the tutorial page">
+          <figcaption>
+              Something to go off, at the very least.
+          </figcaption>
+        </figure>
+        <p>I gave that design a really good go and I just don't think it's suitable, I'm going to opt for a more basic design instead, with the images inline. The design I had wanted to use would have had them appear in the right column next to the text refering to them, but the css grid is complicated and confuses me. I do feel it would be much easier to do it with more than one stylesheet (i.e. one per page), but I can't do that.</p>
+        <p>I won't draw out the new design because it'll just everything in one column, images displaying as block within the text, with their captions</p>
+        <!-- TUTORIAL IMPLEMENTATION -->
+          <p>Now that's finished, I want to clean up this page then the contact page. First is to properly reference in Harvard format. Instead of footnotes<sup> like this</sup>, I should be using (Last Name(s), Date). I'll go through and change that, and order the references at the bottom to be alphabetical. Not really any markup change worth talking about so I won't show it. One thing I do want to do with the references is highlight them when you click on them, that way it's clear which one you want to be looking at. I know I can use css animations for this, but I'm not totally clear on it, so <a href="#ref-10">W3Schools</a> (n.d.) is where I've gone, as well as StackOverflow where I found an answer explaining how to use the <code>:target</code> pseudo-class to select internal links that have been clicked <a href="#ref-11">(Thomas et al., 2023)</a>. It looks great, here's the changes I made to the CSS:
+        </p>
+        <figure>
+          <img src="images/week11-reference-highlight-css.webp" alt="Image showing CSS using animations with the :target pseudo-class to highlight clicked references" style="max-width: 456px;">
+          <figcaption>
+            Pretty easy, and it's a really helpful addition.
+          </figcaption>
+        </figure>
+
+          <p>Contact page now, I want to style the form, which shouldn't take too long. Mostly a lot of small tweaks to have it how I want, using some slsection by attribute for the CSS of the radio button:</p>
+          <img src="images/week11-contact-form-css.webp" style="max-width: 340px;" alt="CSS used to style the contact form">
+          <p>And here's what the finished contact.html page looks like now:</p>
+          <img src="images/week11-contact-page-finished.webp" alt="How the finished contact.html page looks">
+      </article>
       <p><a id="bottom" href="#top">Go to the top</a></p>
 		</main><!--Close main page content --> 
         
@@ -250,20 +295,22 @@ The commits I made this week were as follows:</p>
         
         	<h2>References</h2>
             
-            <ol>
-          <li id="ref-1"><cite>Souders, S. (2009). don’t use @import. [online] www.stevesouders.com. Available at: <a href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/" target="_blank">https://www.stevesouders.com/blog/2009/04/09/dont-use-import/</a> [Accessed 1 Nov. 2023].</cite></li>
-          <li id="ref-2"><cite>W3Schools (n.d.). HTML Reference. [online] www.w3schools.com. Available at: <a href="https://www.w3schools.com/TAGs" target="_blank">https://www.w3schools.com/tags</a> [Accessed 16 Nov. 2023].</cite></li>
-          <li id="ref-3"><cite>GoogleChrome (2019). GoogleChrome/lighthouse. [online] GitHub. Available at: <a href="https://github.com/GoogleChrome/lighthouse" target="_blank">https://github.com/GoogleChrome/lighthouse</a>.</cite></li>
+            <ul class="references">
           <li id="ref-4"><cite>Deque University (n.d.). Elements must meet minimum color contrast ratio thresholds. [online] dequeuniversity.com. Available at: <a href="https://dequeuniversity.com/rules/axe/4.7/color-contrast" target="_blank">https://dequeuniversity.com/rules/axe/4.7/color-contrast</a> [Accessed 16 Nov. 2023].</cite></li>
           <li id="ref-5"><cite>Dodson, R. (2017). How to Do an Accessibility Review. [online] web.dev. Available at: <a href="https://web.dev/articles/how-to-review" target="_blank">https://web.dev/articles/how-to-review</a> [Accessed 16 Nov. 2023].</cite></li>
-          <li id="ref-6"><cite>Swimberghe, N. (2019). Web performance: prevent wasteful hidden image requests (display: none). [online] Swimburger. Available at: <a href="https://swimburger.net/blog/web/web-performance-prevent-wasteful-hidden-image-requests" target="_blank">https://swimburger.net/blog/web/web-performance-prevent-wasteful-hidden-image-requests</a> [Accessed 23 Nov. 2023].</cite></li>
-          <li id="ref-7"><cite>MDN Contributors (2023b). The Picture Element. [online] developer.mozilla.org. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture</a> [Accessed 23 Nov. 2023].</cite></li>
+          <li id="ref-3"><cite>GoogleChrome (2019). GoogleChrome/lighthouse. [online] GitHub. Available at: <a href="https://github.com/GoogleChrome/lighthouse" target="_blank">https://github.com/GoogleChrome/lighthouse</a>.</cite></li>
           <li id="ref-8"><cite>MDN Contributors (2023a). The Media or Image Source Element. [online] developer.mozilla.org. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source</a> [Accessed 23 Nov. 2023].</cite></li>
+          <li id="ref-7"><cite>MDN Contributors (2023b). The Picture Element. [online] developer.mozilla.org. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture" target="_blank">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture</a> [Accessed 23 Nov. 2023].</cite></li>
+          <li><cite>MDN Contributors (2023c). saturate() - CSS: Cascading Style Sheets | MDN. [online] developer.mozilla.org. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate</a> [Accessed 23 Nov. 2023].</cite></li>
+          <li id="ref-1"><cite>Souders, S. (2009). don’t use @import. [online] www.stevesouders.com. Available at: <a href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/" target="_blank">https://www.stevesouders.com/blog/2009/04/09/dont-use-import/</a> [Accessed 1 Nov. 2023].</cite></li>
+          <li id="ref-6"><cite>Swimberghe, N. (2019). Web performance: prevent wasteful hidden image requests (display: none). [online] Swimburger. Available at: <a href="https://swimburger.net/blog/web/web-performance-prevent-wasteful-hidden-image-requests" target="_blank">https://swimburger.net/blog/web/web-performance-prevent-wasteful-hidden-image-requests</a> [Accessed 23 Nov. 2023].</cite></li>
+          <li id="ref-11"><cite>Thomas, D., Rao, B., Carson and qris (2023). CSS- Highlight a div when the id is linked to using an anchor? [online] Stack Overflow. Available at: <a href="https://stackoverflow.com/a/11142257/9899381" target="_blank">https://stackoverflow.com/a/11142257/9899381</a>. [Accessed 14 Dec. 2023]</cite></li>
           <li id="ref-9"><cite>W3Schools (n.d.). How to Create Centered Menu Links. [online] www.w3schools.com. Available at: <a href="https://www.w3schools.com/howto/howto_css_topnav_centered.asp" target="_blank">https://www.w3schools.com/howto/howto_css_topnav_centered.asp</a> [Accessed 23 Nov. 2023].</cite></li>
-          <li><cite>MDN Contributors (2023a). saturate() - CSS: Cascading Style Sheets | MDN. [online] developer.mozilla.org. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate</a> [Accessed 23 Nov. 2023].</cite></li>
-            </ol>
+          <li id="ref-2"><cite>W3Schools (n.d.). HTML Reference. [online] www.w3schools.com. Available at: <a href="https://www.w3schools.com/TAGs" target="_blank">https://www.w3schools.com/tags</a> [Accessed 16 Nov. 2023].</cite></li>
+          <li id="ref-10"><cite>W3schools (2019). CSS Animations. [online] W3schools.com. Available at: <a href="https://www.w3schools.com/css/css3_animations.asp" target="_blank">https://www.w3schools.com/css/css3_animations.asp</a> [Accessed 14 Dec. 2023].</cite></li>
+            </ul>
             
-        </aside>    
+      </aside>
  
 	<footer><!--Footer content -->
 		<a href="mailto:B.Harris5@uni.brighton.ac.uk">Contact me</a><br>

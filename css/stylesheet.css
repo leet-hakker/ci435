@@ -17,7 +17,7 @@ body {
     line-height: 1.1rem;
 }
 
-#wrapper, #contact-wrapper {
+#wrapper, #contact-wrapper, #tutorial-wrapper {
     max-width: 1000px;
     margin-right: auto;
     margin-left: auto;
@@ -25,15 +25,13 @@ body {
     padding-left: 10px;
 }
 
-/* #contact-wrapper { */
-/*   max-width: 1000px; */
-/*   margin-right: auto; */
-/*   margin-left: auto; */
-/*   padding-right: 10px; */
-/*   padding-left: 10px; */
-/* } */
+#tutorial-wrapper h2 {
+  margin-bottom: 0px;
+}
 
-main {}
+main {
+  display: grid;
+}
 
 article {
   margin-bottom: 3em;
@@ -50,6 +48,7 @@ header {}
 .banner {
   background-color: var(--accent-colour2);
   margin: 0px;
+  margin-bottom: 10px;
 }
 
 .post {
@@ -111,12 +110,44 @@ header {}
   display: inline;
 }
 
+fieldset {
+  border: none;
+  border-left: 1px solid gray;
+}
+
+form, #get-in-touch {
+  width: 50%;
+  display: inline-block;
+}
+
+form input {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+form textarea {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+form input[type=radio] {
+  margin-bottom: 0px;
+  display: inline;
+  margin-right: 5px;
+}
+
 /*headings------------------------------------------------------------------- */
 h1 {
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
     color: var(--main-colour);
     font-size: 36px;
     line-height: 50px;
+    margin: 0px;
 }
 
 h2 {}
@@ -193,6 +224,14 @@ time {}
 code {
   background-color: var(--tertiary-colour);
 }
+
+.required-ast {
+  color: red;
+}
+
+.underline {
+  text-decoration: underline;
+}
 /*image----------------------------------------------------------------------- */
 figure {}
 
@@ -232,6 +271,16 @@ a:active {
     color: var(--link-colour);
 }
 
+@keyframes reference-highlight {
+  from {background-color: #99ddff;}
+  to {background-color: var(--main-colour);}
+}
+
+.references li:target {
+  animation-name: reference-highlight;
+  animation-duration: 1.3s;
+}
+
 .hidden-link {
   text-decoration: none;
   color: var(--secondary-colour);
@@ -246,6 +295,9 @@ table {grid-area: table;}
 main {grid-area: main;}
 aside {grid-area: aside;}
 footer {grid-area: footer;}
+
+
+/* css grid styling */
 
 #wrapper {
   display: grid;
@@ -267,6 +319,9 @@ footer {grid-area: footer;}
     "footer";
 }
 
+
+/* media queries */
+
 @media (min-width: 50em) {
   #wrapper {
     grid-template-columns: 3fr 6fr;
@@ -286,10 +341,6 @@ footer {grid-area: footer;}
       "main  main"
       "footer  footer";
   }
-
-  textarea {
-    width: 75%;
-  }
 }
 
 @media (min-width: 60em) {
@@ -304,20 +355,25 @@ footer {grid-area: footer;}
   }
 
   #contact-wrapper {
+    grid-template-columns: 3fr 3fr;
+    grid-template-areas:
+      "banner  banner"
+      "nav  nav"
+      "main main"
+      "footer  footer";
+  }
+
+  #tutorial-wrapper {
     grid-template-columns: 3fr 5fr 3fr;
     grid-template-areas:
-      "banner  banner  banner"
-      "nav  nav  nav"
-      "main  main  main"
-      "footer  footer  footer";
+      "banner banner banner"
+      "nav nav nav"
+      "main main main"
+      "footer footer footer"
   }
 
   img {
-    width: 100%;
-  }
-
-  textarea {
-    width: 50%;
+    /* width: 100%; */
   }
 }
 
@@ -346,7 +402,7 @@ body {
  }
 }
 
-@media (max-width: 35em) {
+@media (max-width: 50em) {
  table {
   display:none;
  }
@@ -370,7 +426,7 @@ body {
 }
 
 /*640 px - tablet portrait orientation - 2 columns*/
-@media screen and (min-width: 40em){
+@media screen and (min-width: 50em){
   .project-card { width: 50%; }
 }
 /*960 px* - tablet landscape orientation and above - 3 columns*/
